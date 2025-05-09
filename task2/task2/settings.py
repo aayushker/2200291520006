@@ -12,23 +12,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-yvt55m54gqpq!qm%2_ed1&^ahe&yn#-n6wnp)9mhm+g+zt*%q6'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+STOCK_API_BASE_URL = 'http://20.244.56.144/evaluation-service'
+API_CACHE_TTL = 60 
+ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ2Nzk3NDUyLCJpYXQiOjE3NDY3OTcxNTIsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjgzNDQwZGE4LTFmNjctNGZhNy05YjYyLWE3M2NhMTg0MjkxMSIsInN1YiI6ImFheXVzaGtlci4yMjI2Y3NlYWkxQGtpZXQuZWR1In0sImVtYWlsIjoiYWF5dXNoa2VyLjIyMjZjc2VhaTFAa2lldC5lZHUiLCJuYW1lIjoiYWF5dXNoa2VyIHNpbmdoIiwicm9sbE5vIjoiMjIwMDI5MTUyMDAwNiIsImFjY2Vzc0NvZGUiOiJTeFZlamEiLCJjbGllbnRJRCI6IjgzNDQwZGE4LTFmNjctNGZhNy05YjYyLWE3M2NhMTg0MjkxMSIsImNsaWVudFNlY3JldCI6InJDQ05GZkZ5WEREdktLc3IifQ.UWCyhIrAibZCa6F8AOkWqwEzX1NLAkYU-PM2xH1BNlI"
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,13 +33,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'stocks',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -70,8 +67,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'task2.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -81,8 +76,6 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -100,8 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -111,13 +102,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
